@@ -1,0 +1,930 @@
+
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+/* BMitra Custom Font by fontchi.com */
+@font-face {
+    font-family: 'B Mitra';
+    src: url('fonts/BMITRA.woff2') format('woff2'),
+         url('fonts/B Mitra_0.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* @font-face {
+    font-family: 'BMITRAB';
+    src: url('fonts/BMITRABD.woff2') format('woff2');
+    font-weight: bold;
+    font-style: normal;
+} */
+
+/* ==================== اصلاح فونت سراسری ==================== */
+* {
+    font-family:  'B Mitra',sans-serif,'Material Icons'  !important;
+}
+
+/* مخصوص عناصر داخلی Streamlit */
+body,div, p, span, label, input, textarea, button, select, option, h1, h2, h3, h4, h5, h6 {
+    font-family: 'B Mitra', sans-serif,'Material Icons' !important;
+}
+
+/* مخصوص تب‌ها، دکمه‌ها و عناصر خاص */
+[data-testid="stMarkdownContainer"],
+[data-testid="stTabs"],
+[data-testid="stButton"],
+[data-testid="stSidebar"],
+[data-testid="stRadio"],
+[data-testid="stTextInput"],
+[data-testid="stTextArea"],
+[data-testid="stSelectbox"] {
+    font-family: 'B Mitra','', sans-serif !important;
+}
+
+/* مخصوص جدول‌ها */
+table, th, td {
+    font-family: 'B Mitra', sans-serif !important;
+}
+
+
+:root {
+    /* رنگ‌های اصلی */
+    --primary-color: #6366f1;
+    --primary-dark: #4f46e5;
+    --primary-light: #818cf8;
+    --secondary-color: #8b5cf6;
+    --accent-color: #ec4899;
+    
+    /* رنگ‌های متن و پس‌زمینه */
+    --bg-main: #f8fafc;
+    --bg-card: #ffffff;
+    --text-dark: #1e293b;
+    --text-light: #64748b;
+    --border-color: #e2e8f0;
+    
+    /* رنگ‌های ریسک */
+    --risk-low: #10b981;
+    --risk-medium: #f59e0b;
+    --risk-high: #f97316;
+    --risk-critical: #ef4444;
+    
+    /* سایه‌ها */
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+    --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.12);
+    
+    /* گرادیانت‌های مدرن */
+    --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --gradient-secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    --gradient-success: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    --gradient-card: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --gradient-status-ready: linear-gradient(135deg, #2dd4bf 0%, #14b8a6 100%); /* گرادیانت سبز-آبی مدرن */
+}
+
+/* ==================== تنظیمات عمومی صفحه ==================== */
+body { 
+   
+    background: var(--bg-main);
+    direction: rtl;
+}
+
+.main .block-container { 
+    direction: rtl; 
+    text-align: right; 
+    padding: 2rem; 
+    max-width: 1400px; 
+}
+
+h1, h2, h3, h4, h5, p, div, label { 
+    direction: rtl !important; 
+    text-align: right !important; 
+}
+
+/* ==================== هدر اصلی ==================== */
+.modern-header {
+    background: var(--gradient-primary);
+    color: white; 
+    padding: 3rem 2rem; 
+    border-radius: 24px;
+    text-align: center !important; 
+    margin-bottom: 2.5rem; 
+    box-shadow: var(--shadow-lg);
+    position: relative;
+    overflow: hidden;
+}
+
+.modern-header::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+    animation: rotate 20s linear infinite;
+}
+
+@keyframes rotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.modern-header h1 { 
+    font-size: 2.5rem; 
+    font-weight: 700; 
+    text-align: center !important;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+/* ==================== تب‌ها (Tabs) ==================== */
+.stTabs [data-baseweb="tab-list"] {
+    background: white;
+    padding: 0.5rem;
+    border-radius: 16px;
+    box-shadow: var(--shadow-sm);
+    gap: 0.5rem;
+}
+
+.stTabs [data-baseweb="tab"] {
+    border-radius: 12px !important; 
+    padding: 1rem 2rem !important; 
+    font-weight: 700 !important;
+    font-size: 1.1rem !important;
+    transition: all 0.3s ease !important; 
+    color: var(--text-light) !important; 
+    border: 2px solid transparent !important;
+    background: transparent !important;
+}
+
+.stTabs [aria-selected="true"] {
+    background: var(--gradient-primary) !important; 
+    color: white !important; 
+    border: 2px solid transparent !important;
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3) !important;
+    transform: translateY(-2px);
+}
+
+.stTabs [data-baseweb="tab"]:hover:not([aria-selected="true"]) {
+    background: #f1f5f9 !important;
+    color: var(--primary-color) !important;
+}
+
+/* ==================== کارت‌های عمومی ==================== */
+.modern-card {
+    background: transparent !important; 
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+}
+
+.modern-card:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px);
+}
+
+.modern-card h2, .modern-card h3 {
+    background: linear-gradient(135deg, #e0e7ff 0%, #ddd6fe 100%) !important;
+    padding: 1.2rem 2rem !important;
+    border-radius: 16px !important;
+    text-align: center !important;
+    color: var(--text-dark) !important;
+    font-weight: 650 !important;
+    margin: 2rem 0 1.5rem 0 !important;
+    box-shadow: var(--shadow-sm) !important;
+    border-right: 5px solid var(--primary-color) !important;
+    border: none !important;
+}
+
+.modern-card p {
+    text-align: center !important;
+    color: var(--text-light) !important;
+    font-size: 1rem !important;
+}
+
+/* ==================== دکمه‌ها - همه یکدست ==================== */
+.stButton > button {
+    width: 100% !important;
+    min-width: 280px !important;
+    max-width: 350px !important;
+    padding: 1rem 2rem !important;
+    font-size: 1.15rem !important;
+    font-weight: 700 !important;
+    border: none !important; 
+    border-radius: 12px !important; 
+    background: var(--gradient-primary) !important; 
+    color: white !important;
+    transition: all 0.3s ease !important;
+    box-shadow: var(--shadow-md) !important;
+    margin: 0.5rem auto !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+}
+
+.stButton > button p {
+    margin: 0 !important;
+    text-align: center !important;
+    width: 100% !important;
+}
+
+.stButton > button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(102, 126, 234, 0.4) !important;
+    background: linear-gradient(135deg, #7c3aed 0%, #8b5cf6 100%) !important;
+}
+
+/* دکمه‌های دانلود - وسط‌چین */
+.stDownloadButton > button {
+    width: 100% !important;
+    min-width: 280px !important;
+    max-width: 350px !important;
+    padding: 1rem 2rem !important;
+    font-size: 1.15rem !important;
+    font-weight: 700 !important;
+    border: none !important; 
+    border-radius: 12px !important; 
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%) !important; 
+    color: white !important;
+    transition: all 0.3s ease !important;
+    box-shadow: var(--shadow-md) !important;
+    margin: 0.5rem auto !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+}
+
+.stDownloadButton > button p {
+    margin: 0 !important;
+    text-align: center !important;
+    width: 100% !important;
+}
+
+.stDownloadButton > button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(16, 185, 129, 0.4) !important;
+}
+
+/* وسط‌چین کردن محتوای تمام دکمه‌ها */
+button div {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 100% !important;
+    text-align: center !important;
+}
+
+button div p {
+    text-align: center !important;
+    margin: 0 auto !important;
+}
+
+/* ==================== کارت‌های متریک (آماده پردازش و آمار) ==================== */
+/* 🎨 کارت‌های آماری مدرن */
+/* 🎨 طراحی کلی کارت‌های آماری مدرن */
+.metric-modern {
+    background: var(--gradient-primary);
+    border-radius: 24px;
+    padding: 2rem 1.5rem;
+    text-align: center !important;
+    box-shadow: 0 8px 32px rgba(102, 126, 234, 0.3);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+    border: none;
+}
+
+.metric-modern:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 12px 40px rgba(102, 126, 234, 0.4);
+}
+
+/* عنوان کوچک کارت */
+.metric-modern p {
+    color: rgba(255, 255, 255, 0.85) !important;
+    font-size: 1.1rem !important;
+    margin: 0 0 0.75rem 0;
+    text-align: center !important;
+    font-weight: 600 !important;
+}
+
+/* مقدار اصلی (جایگزین h3) */
+.metric-modern .metric-value {
+    font-size: 3.2rem !important;    /* دقیقاً برابر اندازه h3 قبلی */
+    font-weight: 800 !important;
+    color: white !important;
+    text-align: center !important;
+    margin: 0;
+    line-height: 1.2;
+}
+
+/* کارت وضعیت آماده ✅ */
+/* ✅ کارت وضعیت آماده با گرادیان سبز–فیروزه‌ای مدرن */
+.metric-modern.metric-status-ready {
+    background:linear-gradient(135deg, rgb(17, 153, 142) 0%, rgb(56, 239, 125) 100%) !important; /* سبز نعنایی → سبز لجنی → آبی فیروزه‌ای */
+    box-shadow: 0 8px 32px rgba(16, 185, 129, 0.35);
+    border: none;
+    color: #ffffff !important;
+    transition: all 0.3s ease-in-out;
+}
+
+.metric-modern.metric-status-ready:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 12px 40px rgba(16, 185, 129, 0.45);
+}
+
+/* متن داخل کارت آماده */
+.metric-modern.metric-status-ready p {
+    color: rgba(255, 255, 255, 0.9) !important;
+}
+
+.metric-modern.metric-status-ready .metric-value {
+    color: #ffffff !important;
+}
+
+
+/* ==================== کارت‌های آماری تب سوم - مدرن ==================== */
+/* ==================== کارت‌های آماری تب سوم - طراحی نهایی ==================== */
+
+/* ==================== کارت‌های آماری تب سوم - طراحی نهایی (نسخه 2) ==================== */
+
+/* ساختار اصلی کارت جدید (v2) */
+.stat-card-v2 {
+    border-radius: 20px; /* گوشه‌های گردتر */
+    padding: 1.5rem;
+    color: white;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    min-height: 160px; /* افزایش ارتفاع کارت */
+    
+    /* مهم‌ترین بخش: تنظیمات Flexbox برای چیدمان عمودی و مرکزی */
+    display: flex;
+    flex-direction: column; /* چیدمان عمودی */
+    justify-content: center; /* وسط‌چین عمودی */
+    align-items: center;    /* وسط‌چین افقی */
+    
+    /* برای قرارگیری آیکون */
+    position: relative;
+    overflow: hidden; /* برای جلوگیری از بیرون زدن آیکون */
+}
+
+.stat-card-v2:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+}
+
+/* آیکون در گوشه بالا سمت راست */
+.stat-card-v2 .card-icon-v2 {
+    position: absolute; /* کلید اصلی برای جایگذاری دقیق */
+    top: -10px;        /* کمی بالاتر از لبه کارت */
+    right: -15px;       /* کمی بیرون از لبه کارت */
+    font-size: 5rem;    /* سایز بسیار بزرگ */
+    opacity: 0.15;      /* نیمه‌شفاف */
+    transform: rotate(-15deg); /* چرخش برای زیبایی */
+    pointer-events: none; /* برای اینکه قابل کلیک نباشد */
+}
+
+/* عدد اصلی */
+.stat-card-v2 .card-number-v2 {
+    font-size: 3.5rem; /* فونت بسیار بزرگ */
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 0.25rem;
+}
+
+/* عنوان کارت */
+.stat-card-v2 .card-title-v2 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    opacity: 0.9;
+}
+
+/* =============== رنگ‌بندی گرادیانی برای هر کارت =============== */
+/* از همان رنگ‌های قبلی استفاده می‌کنیم چون زیبا هستند */
+
+/* ریسک بحرانی */
+.stat-card-v2.بحرانی { background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%); }
+/* ریسک بالا */
+.stat-card-v2.بالا { background: linear-gradient(135deg, #f97316 0%, #ea580c 100%); }
+/* ریسک متوسط */
+.stat-card-v2.متوسط { background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); }
+/* ریسک پایین */
+.stat-card-v2.پایین { background: linear-gradient(135deg, #10b981 0%, #059669 100%); }
+
+/* اظهارنظر مقبول */
+.stat-card-v2.مقبول { background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%); }
+/* اظهارنظر مشروط */
+.stat-card-v2.مشروط { background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); }
+/* اظهارنظر مردود */
+.stat-card-v2.مردود { background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%); }
+/* عدم اظهارنظر */
+.stat-card-v2.عدم-اظهارنظر { background: linear-gradient(135deg, #64748b 0%, #475569 100%); }
+/* ==================== جدول خلاصه شرکت‌ها ==================== */
+.summary-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    margin-top: 1rem;
+}
+
+.summary-table thead {
+    background: var(--gradient-primary);
+}
+
+.summary-table thead th {
+    padding: 1rem;
+    text-align: center !important;
+    color: white !important;
+    font-weight: 700;
+    font-size: 1.1rem;
+    border: none;
+}
+
+.summary-table tbody tr {
+    background: white;
+    transition: all 0.2s ease;
+}
+
+.summary-table tbody tr:hover {
+    background: #f8fafc;
+    transform: scale(1.01);
+}
+
+.summary-table tbody tr:nth-child(even) {
+    background: #fafafa;
+}
+
+.summary-table tbody tr:nth-child(even):hover {
+    background: #f8fafc;
+}
+
+.summary-table tbody td {
+    padding: 1rem;
+    text-align: center !important;
+    border-bottom: 1px solid var(--border-color);
+    font-size: 1rem;
+}
+
+/* استایل سلول‌های اظهارنظر */
+.summary-table .opinion-cell {
+    font-weight: 700;
+    border-radius: 8px;
+}
+
+.summary-table .opinion-accepted {
+    color: #059669;
+    background: #d1fae5;
+}
+
+.summary-table .opinion-conditional {
+    color: #d97706;
+    background: #fef3c7;
+}
+
+.summary-table .opinion-rejected {
+    color: #dc2626;
+    background: #fee2e2;
+}
+
+.summary-table .opinion-no {
+    color: #4b5563;
+    background: #f3f4f6;
+}
+
+/* استایل سلول‌های ریسک */
+.summary-table .risk-cell {
+    font-weight: 700;
+    border-radius: 8px;
+}
+
+.summary-table .risk-critical {
+    color: #dc2626;
+    background: #fee2e2;
+}
+
+.summary-table .risk-high {
+    color: #ea580c;
+    background: #ffedd5;
+}
+
+.summary-table .risk-medium {
+    color: #d97706;
+    background: #fef3c7;
+}
+
+.summary-table .risk-low {
+    color: #059669;
+    background: #d1fae5;
+}
+
+/* ==================== هدرهای تب سوم - تک رنگ ==================== */
+.modern-card h3 {
+    background: linear-gradient(135deg, #e0e7ff 0%, #ddd6fe 100%);
+    padding: 1rem 2rem;
+    border-radius: 12px;
+    text-align: center !important;
+    color: var(--text-dark) !important;
+    font-weight: 700 !important;
+    margin: 2rem 0 1.5rem 0 !important;
+    box-shadow: var(--shadow-sm);
+    border-right: 5px solid var(--primary-color);
+}
+
+/* ==================== کارت‌های نتایج (بدون تغییر) ==================== */
+.new-result-card {
+    background-color: white;
+    border-radius: 20px;
+    border: 1px solid var(--border-color);
+    border-right: 6px solid #10b981; 
+    padding: 1.5rem 2rem;
+    box-shadow: var(--shadow-md);
+    max-width: 950px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2.5rem;
+    transition: all 0.3s ease;
+}
+
+.new-result-card:hover {
+    box-shadow: var(--shadow-lg);
+}
+
+.new-result-card.error-card { 
+    border-right-color: var(--risk-critical); 
+}
+
+.error-message { 
+    color: var(--risk-critical); 
+    font-weight: 600; 
+    text-align: center !important;
+}
+
+.card-header h5 {
+    font-size: 1.4rem !important;
+    font-weight: 700 !important;
+    color: var(--text-dark);
+    margin-bottom: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center !important;
+}
+
+.status-icon { 
+    font-size: 1.5rem; 
+    font-weight: bold; 
+}
+
+.status-icon.success { 
+    color: #10b981; 
+}
+
+.status-icon.error { 
+    color: var(--risk-critical); 
+}
+
+.new-card-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.2rem;
+}
+
+.new-info-box {
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+    border-radius: 12px;
+    padding: 1.2rem;
+    border: 1px solid var(--border-color);
+    border-right: 4px solid var(--primary-color);
+    text-align: center !important;
+    transition: all 0.2s ease;
+}
+
+.new-info-box:hover {
+    transform: translateX(-3px);
+    box-shadow: var(--shadow-sm);
+}
+
+.new-info-label {
+    font-size: 0.95rem !important;
+    color: var(--text-light);
+    margin-bottom: 0.5rem;
+    display: block;
+    text-align: center !important;
+    font-weight: 600 !important;
+}
+
+.new-info-value {
+    font-size: 1.2rem !important;
+    font-weight: 700 !important;
+    color: var(--text-dark);
+    text-align: center !important;
+}
+
+.new-risk-box {
+    grid-column: 1 / -1;
+    color: white;
+    border-radius: 12px;
+    padding: 1.2rem;
+}
+
+.new-risk-box .new-info-label, 
+.new-risk-box .new-info-value { 
+    color: white !important; 
+    text-align: center !important;
+}
+
+.new-risk-box.risk-low { 
+    background: linear-gradient(135deg, var(--risk-low) 0%, #059669 100%); 
+}
+
+.new-risk-box.risk-medium { 
+    background: linear-gradient(135deg, var(--risk-medium) 0%, #f59e0b 100%); 
+}
+
+.new-risk-box.risk-medium .new-info-label, 
+.new-risk-box.risk-medium .new-info-value { 
+    color: #1e293b !important; 
+}
+
+.new-risk-box.risk-high { 
+    background: linear-gradient(135deg, var(--risk-high) 0%, #ea580c 100%); 
+}
+
+.new-risk-box.risk-critical { 
+    background: linear-gradient(135deg, var(--risk-critical) 0%, #dc2626 100%); 
+}
+
+/* ==================== Markdown بالای نمودارها ==================== */
+/* ==================== هدرهای تب چهارم (نمودارها) - اصلاح شده ==================== */
+
+
+
+/* هدرهای اصلی بخش‌ها 1 تا 4 - حذف پس‌زمینه بنفش و استفاده از رنگ آبی-فیروزه‌ای */
+/* Markdown هدرها */
+[data-testid="stMarkdownContainer"] h2,
+[data-testid="stMarkdownContainer"] h3 {
+    background: linear-gradient(135deg, #e0e7ff 0%, #ddd6fe 100%) !important;
+    padding: 1.2rem 2rem !important;
+    border-radius: 16px !important;
+    text-align: center !important;
+    color: var(--text-dark) !important;
+    font-weight: 700 !important;
+    margin: 2rem 0 1.5rem 0 !important;
+    box-shadow: var(--shadow-sm) !important;
+    border-right: 5px solid var(--primary-color) !important;
+}
+
+/* عنوان نمودار */
+/* 🎯 استایل عنوان نمودارها با گرادیان ملایم و مدرن */
+[data-testid="stMarkdownContainer"] h3[style*="background: rgba"] {
+    background: linear-gradient(90deg, #ffb6c1, #ffd6a5, #fff5cc) !important; /* صورتی روشن → نارنجی → کرم */
+    color: #2c3e50 !important;           /* رنگ تیره برای خوانایی متن */
+    padding: 10px 20px !important;       /* فضای داخلی مناسب */
+    border-radius: 14px !important;      /* گوشه‌های گرد و نرم */
+    text-align: center !important;       /* وسط‌چین برای عنوان */
+    font-weight: 600 !important;         /* ضخامت متوسط فونت */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08) !important; /* سایه ظریف برای عمق بصری */
+    border: 1px solid rgba(255, 255, 255, 0.6) !important;
+    transition: all 0.3s ease !important;
+}
+
+/* ✨ افکت hover برای لطافت بیشتر */
+[data-testid="stMarkdownContainer"] h3[style*="background: rgba"]:hover {
+    background: linear-gradient(90deg, #f9a8d4, #fcd34d) !important; /* صورتی شاد ↔ طلایی روشن */
+    transform: scale(1.02);
+}
+
+
+/* حذف فاصله بین هدر و نمودار */
+[data-testid="stMarkdownContainer"]:has(+ [data-testid="stPlotlyChart"]) h3,
+[data-testid="stMarkdownContainer"]:has(+ .element-container) h3 {
+    margin-bottom: 0 !important;
+}
+
+.element-container:has(.plotly-graph-div) {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+
+/* کانتینر نمودارها - چسبیده به هدر */
+.chart-container {
+    margin-top: 0 !important;
+    padding-top: 1rem !important;
+}
+
+/* ==================== File Uploader ==================== */
+.stFileUploader > div {
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+    border: 2px dashed var(--primary-color) !important;
+    border-radius: 16px !important;
+    padding: 2rem !important;
+    transition: all 0.3s ease;
+}
+
+.stFileUploader > div:hover {
+    background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+    border-color: var(--primary-dark) !important;
+}
+
+.stFileUploader label { 
+    color: var(--text-dark) !important; 
+    font-size: 1.1rem !important;
+    font-weight: 600 !important;
+}
+
+/* ==================== Radio Buttons ==================== */
+[data-testid="stRadio"] label {
+    font-size: 1.15rem !important;
+    font-weight: 600 !important;
+    color: var(--text-dark) !important;
+}
+
+[data-testid="stRadio"] input[type="radio"] {
+    accent-color: var(--primary-color) !important;
+    width: 20px !important;
+    height: 20px !important;
+}
+
+/* ==================== Expander ==================== */
+.stExpander { 
+    border: 1px solid var(--border-color) !important; 
+    background: white !important; 
+    border-radius: 12px !important;
+    margin: 1rem 0 !important;
+}
+
+.streamlit-expanderHeader { 
+    color: var(--primary-color) !important; 
+    font-weight: 600 !important; 
+    padding: 1rem !important;
+    font-size: 1.1rem !important;
+}
+
+.streamlit-expanderHeader:hover {
+    background: #f8fafc !important;
+}
+
+/* ==================== سایدبار ==================== */
+[data-testid="stSidebar"] { 
+    background: white !important; 
+    border-left: 1px solid var(--border-color) !important;
+    min-width: 320px !important;
+    max-width: 350px !important;
+}
+
+[data-testid="stSidebar"] .stButton > button { 
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%) !important; 
+    color: white !important; 
+    width: 100% !important;
+    font-weight: 700 !important;
+}
+
+[data-testid="stSidebar"] .stButton > button:hover { 
+    background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%) !important; 
+    transform: translateY(-2px);
+}
+
+[data-testid="stSidebar"] h2,
+[data-testid="stSidebar"] h3 { 
+    font-size: 1.3rem !important; 
+    font-weight: 700 !important; 
+    color: var(--text-dark) !important;
+    padding: 0.5rem 0;
+    border-bottom: 2px solid var(--border-color);
+    margin-bottom: 1rem !important;
+}
+
+[data-testid="stSidebar"] [data-testid="stRadio"] > div {
+    display: grid; 
+    grid-template-columns: 1fr; 
+    gap: 1rem; 
+    padding: 1rem;
+    background: linear-gradient(135deg, #e9eefd 0%, #e7e3f8 100%); 
+    border-radius: 12px; 
+    border: 1px solid #cdbced;
+}
+/* (135deg, #f0f9ff 0%, #e0f2fe 100%) */
+[data-testid="stSidebar"] [data-testid="stRadio"] label {
+    display: flex; 
+    align-items: center; 
+    gap: 0.75rem;
+    font-weight: 600 !important; 
+    font-size: 1.1rem !important;
+    padding: 0.5rem;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+}
+
+[data-testid="stSidebar"] [data-testid="stRadio"] label:hover {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+/* ==================== TextArea ==================== */
+.stTextArea textarea {
+    font-size: 1.05rem !important;
+    font-family: 'B Mitra'!important;
+    border: 2px solid var(--border-color) !important;
+    border-radius: 12px !important;
+    padding: 1rem !important;
+}
+
+.stTextArea textarea:focus {
+    border-color: var(--primary-color) !important;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1) !important;
+}
+
+/* ==================== Success/Error/Info Boxes ==================== */
+.success-box-modern {
+    background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+    color: #065f46;
+    padding: 1.2rem 1.5rem !important;
+    border-radius: 12px;
+    border-right: 5px solid var(--risk-low);
+    font-size: 1.1rem !important;
+    font-weight: 600 !important;
+    box-shadow: var(--shadow-sm);
+}
+
+.error-box-modern {
+    background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+    color: #991b1b;
+    padding: 1.2rem 1.5rem !important;
+    border-radius: 12px;
+    border-right: 5px solid var(--risk-critical);
+    font-size: 1.1rem !important;
+    font-weight: 600 !important;
+    box-shadow: var(--shadow-sm);
+}
+
+.info-box-modern {
+    background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+    color: #1e3a8a;
+    padding: 1.2rem 1.5rem !important;
+    border-radius: 12px;
+    border-right: 5px solid var(--primary-color);
+    font-size: 1.1rem !important;
+    font-weight: 600 !important;
+    box-shadow: var(--shadow-sm);
+}
+
+/* ==================== درشت کردن فونت‌های عمومی ==================== */
+p, label, div, span {
+    font-size: 1.05rem !important;
+}
+
+/* ==================== مخفی کردن عناصر اضافی ==================== */
+#MainMenu, footer, header { 
+    visibility: hidden; 
+}
+
+/* ==================== انیمیشن‌های ظریف ==================== */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.modern-card, .metric-modern, .new-result-card, .stat-card {
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* ==================== Responsive Design ==================== */
+@media (max-width: 768px) {
+    .modern-header h1 { 
+        font-size: 1.8rem !important; 
+    }
+    
+    .new-card-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .stButton > button,
+    .stDownloadButton > button {
+        min-width: 100% !important;
+        max-width: 100% !important;
+    }
+}
+
+/* ==================== اصلاحات نهایی ==================== */
+/* تضمین وسط‌چین بودن همه عناصر مهم */
+.modern-header *, 
+.modern-card h2, 
+.modern-card h3, 
+.modern-card p, 
+.metric-modern *,
+.new-info-box *,
+.card-header *,
+.stat-card * {
+    text-align: center !important;
+}
+
+/* اصلاح ظاهر Progress Bar (اگر وجود داشت) */
+.stProgress > div > div {
+    background: var(--gradient-primary) !important;
+}
